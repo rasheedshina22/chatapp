@@ -3,8 +3,8 @@
 const greetter = (myArray,counter)=>{
     let greetterText = 'Hello';
 
-    for(var index =0; index<myArray.length;index++){
-        console.log(`${greetterText} ${myArray[index]}`)
+    for(var name of myArray){
+        console.log(`${greetterText} ${name}`)
     }
 }
 
@@ -12,19 +12,26 @@ greetter(['randy','cebo','malinga']);
 
 
 //exercise 2
-const toUpper =(val)=>{
-    [...values] = val;
-    values.forEach(element => {
-        console.log(element)
-    });
+const toUpper =([firstLetter,...rest])=>{
+    return firstLetter.toUpperCase()+rest.join('').toLowerCase()
 }
 
-toUpper(['phiti','malinga'])
+console.log(toUpper('string'))
+
 
 //exercise 3
-
+const capitaliseArray =(array1)=>{
+    const map1= array1.map(toUpper)
+    return map1
+}
+console.log(capitaliseArray(['red','blue']))
 
 //exercise 4
+const valueLessThan20 =(array1) =>{
+    return array1.filter((val)=>val<20)
+}
+
+console.log(valueLessThan20([20,1,5]))
 
 //exercise 5
 
