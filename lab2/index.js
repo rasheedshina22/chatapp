@@ -34,6 +34,13 @@ const valueLessThan20 =(array1) =>{
 console.log(valueLessThan20([20,1,5]))
 
 //exercise 5
+const arraySum =(array)=>{
+    return array.reduce((val1,val2)=>val1+val2)
+}
+const arrayProduct =(array)=>{
+    return array.reduce((val1,val2)=>val1+val2)
+}
+
 
 //exercise 6
 class Car{
