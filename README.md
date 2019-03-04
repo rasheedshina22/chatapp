@@ -12,5 +12,8 @@
 within the root directory run <code>npm i</code> this will install the package dependancies needed to run the application.
 The project can then be started using the command "npm start" which starts the server using nodemon.
 
+### Hosting
+application being hosted on [whatsapp-v2.herokuapp.com/api](whatsapp-v2.herokuapp.com/api)
+
 ## Authors
 - Fortune Creig Phiri....................student number->101087294
