@@ -23,9 +23,6 @@ send_message.click(()=>{
     socket.emit("new_message",{message:message.val()})
 })
 
-socket.on("test",(data)=>{
-    test.append(`<p>${data.test}</p>`)
-})
 //get new message
 socket.on("new_message",(data)=>{
     test.append("<p>data</p>")
