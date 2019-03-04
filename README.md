@@ -1,1 +1,16 @@
-# comp3133_full_stack_LABS
+# whatsapp-v2
+
+## Project description
+    This is assignment as part of my george brown college full stack course work. This is an instant messaging application built on the MERN stack.
+    - MongoDB
+    - Express.js
+    - React.js
+    - Node.js
+    The application uses socket.io to allow for instant messaging.
+
+### How to start the project
+within the root directory run <code>npm i</code> this will install the package dependancies needed to run the application.
+The project can then be started using the command "npm start" which starts the server using nodemon.
+
+## Authors
+- Fortune Creig Phiri....................student number->101087294

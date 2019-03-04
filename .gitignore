@@ -1,7 +1,4 @@
 /node_modules
 npm-debug.log
 .DS_Store
-/lab1
-/lab2
-/lab3
 /*.env
