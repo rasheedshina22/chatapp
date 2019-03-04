@@ -19,7 +19,7 @@ io.on('connection',(socket)=>{
     //listening on new message
     socket.on("new_message",(data)=>{
         //broadcasting the message. io.sockets is an object of all sockets
-        io.sockets.emit("new_message",{message:data.message, username:socket.username})
+        io.sockets.emit("new_message",{message:data.message, username:socket.username, env:process.env.PORT})
     })
     
     socket.on("typing",(data)=>{
@@ -28,7 +28,7 @@ io.on('connection',(socket)=>{
 })
 
 //establishing the port
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 server.listen(3000,()=>{
     console.log(`now listening on port ${port}`);

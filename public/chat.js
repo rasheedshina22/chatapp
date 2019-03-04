@@ -25,7 +25,7 @@ send_message.click(()=>{
 
 //get new message
 socket.on("new_message",(data)=>{
-    test.append("<p>data</p>")
+    test.html(`<p>environment: ${data.env} </p>`)
     chatroom.append(`<p class='message'> @${data.username} : ${data.message} </p>`)
 })
 
