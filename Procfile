@@ -1,1 +1,1 @@
-web: node ./ChatApp/server.js
+web: node ChatApp/server.js
