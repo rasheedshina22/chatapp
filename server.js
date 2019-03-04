@@ -1,5 +1,5 @@
-const http = require('http');
 const app = require('./app')
+const http = require('http');
 const server = http.createServer(app)
 
 //socket.io implementation
@@ -9,6 +9,8 @@ const io = require('socket.io').listen(server);
 io.on('connection',(socket)=>{
     console.log(`socket connection established`);
     
+    socket.emit('test',{env:process.env.port})
+
     socket.username = 'Annonymous'
     //each socket object represents a client instance
     socket.on('change_username',(data)=>{
@@ -16,7 +18,7 @@ io.on('connection',(socket)=>{
     })
     //listening on new message
     socket.on("new_message",(data)=>{
-        //broading the message. io.sockets is an object of all sockets
+        //broadcasting the message. io.sockets is an object of all sockets
         io.sockets.emit("new_message",{message:data.message, username:socket.username})
     })
     
@@ -26,9 +28,9 @@ io.on('connection',(socket)=>{
 })
 
 //establishing the port
-const port = (process.env.PORT || 3000);
+const port = 3000;
 
-server.listen(port,()=>{
+server.listen(3000,()=>{
     console.log(`now listening on port ${port}`);
 
 });
