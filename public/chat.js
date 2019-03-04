@@ -1,6 +1,6 @@
 $(function(){
     //creating a connection
- var socket = io.connect('http://localhost:3000')
+ var socket = io.connect('https://whatsapp-v2.herokuapp.com/api')
  
  //buttons and input handles
  var message = $("#message")
