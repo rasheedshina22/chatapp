@@ -7,5 +7,8 @@ const events = new Schema({
     User:String
 })
 
+events.statics.saveEvent = function(event,cb){
+    
+}
 events.methods.
 module.exports = mongoose('Events',events)
