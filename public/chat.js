@@ -1,7 +1,7 @@
 $(function(){
     //creating a connection
- var socket = io.connect('https://whatsapp-v2.herokuapp.com/')
- 
+ //var socket = io.connect('https://whatsapp-v2.herokuapp.com/')
+ var socket = io.connect('localhost:3000')
  //buttons and input handles
  var message = $("#message")
 var username =$("#username")
@@ -9,7 +9,6 @@ var send_message =$("#send_message")
 var send_username =$("#send_username")
 var chatroom =$("#chatroom")
 var feedback = $("#feedback")
-var test = $("#test")
 
 // change username event
 send_username.click(()=>{
@@ -25,12 +24,7 @@ send_message.click(()=>{
 
 //get new message
 socket.on("new_message",(data)=>{
-    test.html(`<p>environment: ${data.env} </p>`)
     chatroom.append(`<p class='message'> @${data.username} : ${data.message} </p>`)
-})
-
-socket.on('test',(data)=>{
-    test.append(`<p> data = ${data.test}</p>`)
 })
 
 //typing event emitter
