@@ -1,13 +1,17 @@
-# Whatsapp-v2
-<>
+## whatsapp-v2
+
+### Disclaimer
+        Following application has no links to any other application of similar nature or structure.
+        This is not a clone of the other app.
+        
 ## Project description
     This is assignment as part of my george brown college<br>
     full stack course work. This is an instant messaging<br>
     application built on the MERN stack.<br>
-    - <code>MongoDB</code>
-    - <code>Express.js</code>
-    - <code>React.js</code>
-    - <code>Node.js</code>
+  <code>MongoDB</code>
+  <code>Express.js</code>
+  <code>React.js</code>
+  <code>Node.js</code>
 
     The application uses socket.io to allow for instant messaging.
 

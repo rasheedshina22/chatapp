@@ -27,6 +27,8 @@
       font-family: 'Comfortaa', sans-serif;
       margin: 0px;
   }
+
+
   
   div#change_username, section#input_zone {
       border: 5px outset #8258FA;
@@ -43,7 +45,8 @@
       height: 85%;
       overflow: auto;
   }
-  
+
+
   section#input_zone {
       height: 7%;
       text-align: center;
