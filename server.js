@@ -42,7 +42,8 @@ io.on('connection',(socket)=>{
     //listening on new message
     socket.on("new_message",(data)=>{
         //broadcasting the message. io.sockets is an object of all sockets
-        
+        //Helper.saveMessage saves to db
+        Helper.saveMessage(data.message,socket.username,socket.room)
         io.sockets.in(socket.room).emit("new_message",{message:data.message,username:socket.username})
         // io.sockets.emit("new_message",{message:data.message, username:socket.username})
     })

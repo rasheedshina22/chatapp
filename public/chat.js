@@ -53,6 +53,7 @@ socket.on("typing",(data)=>{
 
 //
 socket.on("joinRoom",(data)=>{
+    chatroom.html("")
     feedback.html(`<p><i>${data.username} just joined room</i></p>`)
     setTimeout(()=>{
         feedback.html('')
