@@ -1,7 +1,7 @@
 $(function(){
     //creating a connection
- //var socket = io.connect('https://whatsapp-v2.herokuapp.com/')
- var socket = io.connect('localhost:3000')
+ var socket = io.connect('https://whatsapp-v2.herokuapp.com/')
+
  //buttons and input handles
 var message = $("#message")
 var username =$("#username")
