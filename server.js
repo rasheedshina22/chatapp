@@ -15,7 +15,7 @@ const Helper = require('./HelperFunctions')
 const io = require('socket.io').listen(server);
 //list of users currently logged in
 const users ={} ;
-let count = 0
+let count = 0;
 
 //listen on every connection
 io.on('connection',(socket)=>{
@@ -49,11 +49,11 @@ io.on('connection',(socket)=>{
     })
 
     //join a room
-    socket.on('joinRoom',(roomName)=>{
-        socket.room = roomName;
-        io.sockets.in(socket.room).emit("joinRoom",socket.username)
-        console.log(`Room changed to ${roomName}`)
-        socket.join(roomName);
+    socket.on('private',(data)=>{
+        socket.UserId = data.userId;
+        io.sockets.in(socket.userId).emit("joinRoom",{msg:data.msg,userId:data.userId})
+        //console.log(`Room changed to ${roomName}`);
+        socket.join(data.userId);
     })
 
     //listening on typing event
