@@ -41,6 +41,7 @@ io.on('connection',(socket)=>{
     })
     //listening on new message
     socket.on("new_message",(data)=>{
+        console.log("new message received by server")
         //broadcasting the message. io.sockets is an object of all sockets
         //Helper.saveMessage saves to db
         //Helper.saveMessage(data.message,socket.username,socket.room)
