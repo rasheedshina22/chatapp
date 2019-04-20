@@ -16,7 +16,7 @@ class App extends Component {
 
     componentDidMount(){
         //setting up socket
-        this.socket = openSocket.connect("localhost:3030")
+        this.socket = openSocket.connect("/")
         this.socket.on("connect",()=>console.log("connected"))
         this.socket.on("new_message",(data)=>{
             this.updateMessages(data)
