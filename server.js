@@ -15,6 +15,8 @@ const Helper = require('./HelperFunctions')
 const io = require('socket.io').listen(server);
 //list of users currently logged in
 const users ={} ;
+let roomList =["main"]
+
 let count = 0;
 
 //listen on every connection
@@ -24,15 +26,32 @@ io.on('connection',(socket)=>{
     
     //initializing socket properties
     socket.username = 'Annonymous'+ Math.floor(Math.random()*100);
-    socket.room = 'r1';
-    
+    socket.room = 'main';
+    let socketRoom = 'main'
     count++;
 
-    socket.emit("initialize",{countValue:count,usernameValue:socket.username})
+    socket.emit("initialize",{countValue:count,usernameValue:socket.username, rooms:roomList})
 
     //user first assigned to room 1
     socket.join(socket.room,()=>{
         socket.emit("roomChange")
+    })
+
+    socket.on("createRoom",(data)=>{
+        //user creates new room event
+        roomList.push(data.roomName)
+        io.sockets.emit("createRoom",{rooms:roomList})
+    })
+
+    socket.on("switchRoom",(data)=>{
+        //changing between rooms
+        console.log("room switched to ", data.roomName)
+        const roomName = data.roomName
+        socket.room = roomName
+        socket.join(socket.room,()=>{
+            console.log(roomName)
+            socket.emit("switchRoom",{roomName:roomName})
+        })
     })
 
     //each socket object represents a client instance

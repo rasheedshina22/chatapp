@@ -21,7 +21,7 @@ class RoomList extends Component {
                   const active = roomName === selectedRoom ? "active" : ""
                   //selected room 
                   return(
-                     <li key={index} className= {"room" + active}>
+                     <li key={index} className= {"room" + active }>
                        <a href={`# ${roomName}`}
                           onClick={()=>this.switchRoom(roomName)} > # {roomName}</a>
                      </li>
