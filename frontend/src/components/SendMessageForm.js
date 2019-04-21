@@ -14,7 +14,7 @@ class SendMessageForm extends Component {
     handleChange=(input)=>{
       //handles the state for message input field
       this.setState({message:input.target.value})
-      console.log(this.state.message)
+
     }
 
     handleSubmit=(event)=>{
