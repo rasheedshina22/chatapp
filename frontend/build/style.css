@@ -1,8 +1,8 @@
 :root {
     --main-color: #5ea3d0;
-    --secondary-color: white;
+    --secondary-color: #fffffa;
     --main-text-color: #3e5869;
-    --secondary-text-color: #b0c7d6;
+    --secondary-text-color: #505355;
     --send-message-form: #F5F5F5;
 }
 
@@ -52,20 +52,24 @@ html, body {
 /* REST OF CSS */
 .rooms-list {
     box-sizing: border-box;
-    padding: 10px;
+    padding: 20px;
     background-color: var(--main-color);
     overflow: scroll;
     height: 100%;
+    display: flex;
 }
 
 .rooms-list > ul {
     list-style-type: none;    
     padding: 0;
     overflow: scoll;
+
+    align-items:  stretch;
 }
 
 .rooms-list li {
     margin: 10px 0;
+    
 }
 
 .rooms-list > h3 {
@@ -75,13 +79,16 @@ html, body {
 
 .rooms-list .room a {
     color: var(--secondary-text-color);
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     
- }
+}
 
-.rooms-list .room.active a {
-    color: var(--secondary-color);
+.rooms-list .room a .active{
+    color: red;
+    background-color: #fffffa;
+    padding:10px;
+    text-decoration: none;
 }
 
 .new-room-form {
@@ -98,7 +105,7 @@ html, body {
 }
 
 .new-room-form input {
-    width: 135px;
+    width: 145px;
     background: var(--secondary-color);
 }
 

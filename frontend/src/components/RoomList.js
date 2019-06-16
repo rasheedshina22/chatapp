@@ -1,36 +1,51 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class RoomList extends Component {
-    constructor(props){
-        super(props)
-        console.log(this.props.roomList)
-    }
+  switchRoom(roomName) {
+  this.props.switchRoom(roomName);
+  }
 
-    switchRoom(roomName){
-      this.props.switchRoom(roomName)
-    }
+  componentDidMount(){
 
-    render () {
-      const selectedRoom = this.props.selectedRoom
-        return (
-            <div className="rooms-list">
-              <ul>
-                <h3>Available Rooms</h3>
-                
-              {this.props.roomList.map((roomName, index)=>{
-                  const active = roomName === selectedRoom ? "active" : ""
-                  //selected room 
-                  return(
-                     <li key={index} className= {"room" + active }>
-                       <a href={`# ${roomName}`}
-                          onClick={()=>this.switchRoom(roomName)} > # {roomName}</a>
-                     </li>
-                     )
-              })}
-              </ul>
-            </div>
-        )
-    }
+  }
+
+  renderElement(roomName, index){
+    const active = roomName === this.props.selectedRoom ? { color: "#fffffa", fontSize:"1.2rem"} : {}
+  return(
+    <li key={index} className={"room "}>
+        <a
+          style={active}
+          href={`#${roomName}`}
+          onClick={() => this.switchRoom(roomName)}
+        >
+          {" "}
+           {` ${roomName}`}
+        </a>
+    </li>
+  )
+  }
+
+  render() {
+  return (
+    <div className="rooms-list">
+    <ul>
+      <h3 style={styles.headerStyle}>Available Rooms</h3>
+      {this.props.roomList.map((roomName, index) => {
+      //selected room
+      return (
+        this.renderElement(roomName,index)
+      );
+      })}
+    </ul>
+    </div>
+  );
+  }
 }
- 
-export {RoomList};
+
+export { RoomList };
+
+const styles = {
+  headerStyle: {
+  fontSize: 22
+  }
+};

@@ -7,7 +7,7 @@ class App extends Component {
     state ={
         messages:[],
         roomList:[],
-        roomName:""
+        roomName: null
     }
     constructor(props){
         super(props)
@@ -17,15 +17,17 @@ class App extends Component {
     }
 
     componentDidMount(){
+        console.log(`chatting in room ${this.state.roomName}`)
         //setting up socket
-        this.socket = openSocket.connect("/")   //when running locally connect to localhost:3030
+        this.socket = openSocket.connect("http://localhost:3030")   //when running locally connect to localhost:3030
         this.socket.on("connect",()=>console.log("connected"))
         this.socket.on("new_message",(data)=>{
             this.updateMessages(data)
         })
         this.socket.on("initialize",(data)=>{
             this.updateRooms(data.rooms)
-            console.log(`initialize .... ${JSON.stringify(data.rooms)}`)
+            this.setState({roomName:data.rooms[0]}) //setting initial room
+            console.log(`initialize .... ${JSON.stringify(this.state.roomName)}`)
         })
         this.socket.on("createRoom",(data)=>{
             this.updateRooms(data.rooms)
@@ -50,6 +52,7 @@ class App extends Component {
 
     switchRoom(newRoom){
         console.log(`joining ${newRoom}`)
+       this.setState({roomName:newRoom, messageData:[]})
        this.socket.emit("switchRoom",{roomName:newRoom})
     }
 

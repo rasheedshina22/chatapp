@@ -48,6 +48,7 @@ io.on('connection',(socket)=>{
         console.log("room switched to ", data.roomName)
         const roomName = data.roomName
         socket.room = roomName
+        socket.leaveAll()
         socket.join(socket.room,()=>{
             console.log(roomName)
             socket.emit("switchRoom",{roomName:roomName})
