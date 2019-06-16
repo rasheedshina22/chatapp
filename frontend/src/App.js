@@ -7,7 +7,9 @@ class App extends Component {
     state ={
         messages:[],
         roomList:[],
-        roomName: null
+        roomName: null,
+        username:null
+
     }
     constructor(props){
         super(props)
@@ -17,7 +19,7 @@ class App extends Component {
     }
 
     componentDidMount(){
-        console.log(`chatting in room ${this.state.roomName}`)
+
         //setting up socket
         this.socket = openSocket.connect("/")   //when running locally connect to localhost:3030
         this.socket.on("connect",()=>console.log("connected"))
@@ -26,8 +28,7 @@ class App extends Component {
         })
         this.socket.on("initialize",(data)=>{
             this.updateRooms(data.rooms)
-            this.setState({roomName:data.rooms[0]}) //setting initial room
-            console.log(`initialize .... ${JSON.stringify(this.state.roomName)}`)
+            this.setState({roomName:data.rooms[0], username: data.usernameValue}) //setting initial room
         })
         this.socket.on("createRoom",(data)=>{
             this.updateRooms(data.rooms)
@@ -37,7 +38,6 @@ class App extends Component {
             console.log('socket method',data.roomName)
             this.setState({roomName:data.roomName})
         })
-
     }
 
     updateMessages=(data)=>{
@@ -80,7 +80,7 @@ class App extends Component {
             <RoomList switchRoom={this.switchRoomHandle} 
                selectedRoom = {this.state.roomName}
                roomList={this.state.roomList}/>
-            <MessageList messageData={this.state.messages}/>
+            <MessageList messageData={this.state.messages} currentUser={this.state.username}/>
             <SendMessageForm sendMessage={this.sendMessageHandle}/>
             <NewRoomForm addRoom={this.addRoomHandle}/>
         </div>

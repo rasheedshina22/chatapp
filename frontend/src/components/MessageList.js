@@ -14,6 +14,7 @@ class MessageList extends Component {
                 <Message key={index} 
                     text={message.text}
                     username={message.username}
+                    currentUser={this.props.currentUser}
                  />
  )
             })}
