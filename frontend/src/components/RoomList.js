@@ -10,7 +10,7 @@ class RoomList extends Component {
   }
 
   renderElement(roomName, index){
-    const active = roomName === this.props.selectedRoom ? { color: "#fffffa", fontSize:"1.2rem"} : {}
+    const active = roomName === this.props.selectedRoom ? { color: "#FFA011", fontSize:"1.2rem"} : {}
   return(
     <li key={index} className={"room "}>
         <a
@@ -46,6 +46,7 @@ export { RoomList };
 
 const styles = {
   headerStyle: {
-  fontSize: 22
+  fontSize: 22,
+  color:"#cfddf4"
   }
 };

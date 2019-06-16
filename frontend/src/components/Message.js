@@ -7,7 +7,7 @@ const Message =(props)=>{
               <div className="message-username">
                  {currentUser || props.username}
               </div>
-              <div className="message-text" style={currentUser ? {backgroundColor:"#B4B7BA"}: {}}>
+              <div className="message-text" style={currentUser ? {backgroundColor:"#7280ad"}: {}}>
                  {props.text}
               </div>
              </div>
