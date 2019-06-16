@@ -19,7 +19,7 @@ class App extends Component {
     componentDidMount(){
         console.log(`chatting in room ${this.state.roomName}`)
         //setting up socket
-        this.socket = openSocket.connect("http://localhost:3030")   //when running locally connect to localhost:3030
+        this.socket = openSocket.connect("/")   //when running locally connect to localhost:3030
         this.socket.on("connect",()=>console.log("connected"))
         this.socket.on("new_message",(data)=>{
             this.updateMessages(data)
