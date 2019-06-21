@@ -1,9 +1,9 @@
 :root {
-    --main-color: #5ea3d0;
-    --secondary-color: #fffffa;
-    --main-text-color: #3e5869;
-    --secondary-text-color: #505355;
-    --send-message-form: #F5F5F5;
+    --main-color: #002244;
+    --secondary-color: #E1E6E8;
+    --main-text-color: #7280ad;
+    --secondary-text-color: #e1e6e8;
+    --send-message-form: #fffffa;
 }
 
 html, body {
@@ -94,7 +94,7 @@ html, body {
 .new-room-form {
     padding: 0 5px;
     background: var(--secondary-color);
-    color: var(--main-text-color);
+    color: var(--secondary-text-color);
 }
 
 .new-room-form form {
@@ -134,10 +134,11 @@ html, body {
 
 .message {
     margin: 15px 0;
+
 }
 
 .message .message-username {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--main-text-color);
     opacity: 0.9;
     margin-bottom: 6px;

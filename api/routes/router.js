@@ -28,7 +28,7 @@ router.post('/roomHistory',(req, res, next)=>{
             return err;
         }
         return result
-    }).then((result)=>res.status(400).json(result))
+    }).then((result)=>res.status(200).json(result))
         .catch((err)=>{
             res.status(400).json({error:err})
             throw err;
@@ -50,17 +50,23 @@ router.get('/eventsLog',(req,res)=>{
       })
 })
 
-router.post('/',(req,res,next)=>{
-    const chats = new chat({
-        name:req.body.name,
-        chat:req.body.chat,
-        roomName:req.body.roomName
-    });
-    chats.save((err,result)=>{
-        if(err){
-            res.status(500).json({err})
+router.get("/me",(req, res)=>{
+    const chats = chat.find((error, result)=>{
+        if(error){
+            console.log(error)
         }
-        res.status(200).json({result})
+    }).where("roomName","main")
+      .then(result=>{
+          return res.json(result)
+      })
+      .catch(error=>res.json({data:"error"}))
+
+      
+})
+
+router.all("*",function(req, res){
+    return res.status(404).json({
+        data:"route not found"
     })
 })
 
