@@ -4,8 +4,10 @@ import {
   RoomList,
   MessageList,
   NewRoomForm,
-  SendMessageForm
+  SendMessageForm,
+  Login
 } from "./components";
+
 import openSocket from "socket.io-client";
 
 class App extends Component {
@@ -34,7 +36,7 @@ class App extends Component {
       this.updateRooms(data.rooms);
       this.setState({ 
         roomName: data.rooms[0],
-        username: data.username,
+        // username: data.username,
         messages: data.messages
        }); //setting initial room
     });
@@ -81,7 +83,17 @@ class App extends Component {
     this.socket.emit("createRoom", { roomName: newRoom });
   }
 
+  userLogin(username){
+    console.log("called")
+    //used to authenticate the user
+    this.setState({username})
+  }
+
   render() {
+    console.log(this.state.username)
+    if(!this.state.username){
+      return <Login login={this.userLogin.bind(this)}/>
+    }
     return (
       <div className="app">
         <RoomList
