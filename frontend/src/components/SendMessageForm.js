@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class SendMessageForm extends Component {
     constructor(props){
         super(props)
-
         this.state={
             message: ""
         }

@@ -27,7 +27,6 @@ class App extends Component {
   componentDidMount() {
     //setting up socket
     this.socket = openSocket.connect(this.environmentPort); //when running locally connect to localhost:3030
-    this.socket.on("connect", () => console.log("connected"));
     this.socket.on("new_message", data => {
       this.updateMessages(data);
     });
@@ -53,7 +52,7 @@ class App extends Component {
     //called when new message received
     let msgData = [];
     msgData = this.state.messages;
-    msgData.push({ username: data.username, text: data.message });
+    msgData.push(data);
     this.setState({ messages: msgData });
   };
 
@@ -68,6 +67,7 @@ class App extends Component {
   }
   sendMessage(msg) {
     //handle to send message
+    //message sent to server and then handled by updateMessages()
     this.socket.emit("new_message", { message: msg });
   }
 

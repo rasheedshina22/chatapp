@@ -22,17 +22,18 @@ class Helper{
   static saveMessage(message,username,roomname)
   //used to save message to db
   {
-    const m = new messages({
-      name:username,
-      chat:message,
-      roomName:roomname
+      const m = new messages({
+        name:username,
+        chat:message,
+        roomName:roomname
+      })
+      m.save((err,result)=>{
+        if(err){
+          return err
+        }else{
+          return result
+        }
     })
-    m.save((err,result)=>{
-      if(err){
-        console.log(err)
-      }
-    })
-
   }
 
   static fetchMessagesByRoom (roomName = "main"){
