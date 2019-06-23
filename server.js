@@ -30,7 +30,11 @@ io.on('connection',(socket)=>{
   Helper.logEvent('connection','System')
   
   //initializing socket properties
-  socket.username = 'Annonymous'+ Math.floor(Math.random()*100);
+  socket.username = null
+  socket.on("username",(data)=>{
+    console.log("usrname called")
+    socket.username = data.username
+  })
   socket.room = 'main';
   count++;
   const getMessages =async ()=>{

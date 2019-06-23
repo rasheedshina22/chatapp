@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import axios from "axios";
 import {
   RoomList,
   MessageList,
@@ -28,28 +28,33 @@ class App extends Component {
 
   componentDidMount() {
     //setting up socket
-    this.socket = openSocket.connect(this.environmentPort); //when running locally connect to localhost:3030
-    this.socket.on("new_message", data => {
-      this.updateMessages(data);
-    });
-    this.socket.on("initialize", data => {
-      this.updateRooms(data.rooms);
-      this.setState({ 
-        roomName: data.rooms[0],
-        // username: data.username,
-        messages: data.messages
-       }); //setting initial room
-    });
-    this.socket.on("createRoom", data => {
-      this.updateRooms(data.rooms);
-    });
+      this.socket = openSocket.connect(this.environmentPort); //when running locally connect to localhost:3030
+      this.socket.on("new_message", data => {
+        this.updateMessages(data);
+      });
+      this.socket.on("initialize", data => {
+        this.updateRooms(data.rooms);
+        this.setState({
+          roomName: data.rooms[0],
+          messages: data.messages
+        }); //setting initial room
+      });
+      this.socket.on("createRoom", data => {
+        this.updateRooms(data.rooms);
+      });
 
-    this.socket.on("switchRoom", data => {
-      console.log("socket method", data.roomName);
-      this.setState({ roomName: data.roomName });
-    });
+      this.socket.on("switchRoom", data => {
+        console.log("socket method", data.roomName);
+        this.setState({ roomName: data.roomName });
+      });
+
   }
 
+  componentDidUpdate(){
+    if(this.state.username){
+      this.socket.emit("username", { username: this.state.username });
+    }
+  }
   updateMessages = data => {
     //called when new message received
     let msgData = [];
@@ -67,6 +72,7 @@ class App extends Component {
   updateRooms(rooms) {
     this.setState({ roomList: rooms });
   }
+
   sendMessage(msg) {
     //handle to send message
     //message sent to server and then handled by updateMessages()
@@ -83,16 +89,32 @@ class App extends Component {
     this.socket.emit("createRoom", { roomName: newRoom });
   }
 
-  userLogin(username){
-    console.log("called")
+  userLogin({ username, password }) {
     //used to authenticate the user
-    this.setState({username})
+    axios
+      .post(this.environmentPort, { password, username })
+      .then(response => {
+        if (response.status === 200) {
+          this.setState({
+            username: response.data.username
+          });
+        } else {
+          this.setState({
+            error: "something went wrong"
+          });
+        }
+      })
+      .catch(error => {
+        this.setState({
+          username: null,
+          error: "something went wrong"
+        });
+      });
   }
 
   render() {
-    console.log(this.state.username)
-    if(!this.state.username){
-      return <Login login={this.userLogin.bind(this)}/>
+    if (!this.state.username) {
+      return <Login login={this.userLogin.bind(this)} />;
     }
     return (
       <div className="app">

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./login.css";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,8 @@ class Login extends Component {
   submitHandle(event) {
     event.preventDefault();
     // references App.js Function
-    this.props.login(this.state.username);
+    const { username, password } = this.state
+    this.props.login({username , password});
   }
 
   render() {
