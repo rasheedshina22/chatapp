@@ -1,6 +1,9 @@
 {
   "name": "chatapp",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.5.0"
+  },
   "description": "this is chat app built using the MERN stack. this project comes as part of my studies at george brown college",
   "main": "server.js",
   "scripts": {
