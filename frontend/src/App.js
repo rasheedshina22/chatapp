@@ -17,10 +17,10 @@ class App extends Component {
       messages: [],
       roomList: [],
       roomName: null,
-      username: null
+      username: "null"
     };
     this.environmentPort =
-      process.env.NODE_ENV !== "production" ? "localhost:3030" : "/"; //used to set port either to 3030 or /
+      process.env.NODE_ENV !== "production" ? "http://localhost:3030" : "/"; //used to set port either to 3030 or /
     this.sendMessageHandle = this.sendMessage.bind(this);
     this.addRoomHandle = this.addRoom.bind(this);
     this.switchRoomHandle = this.switchRoom.bind(this);
@@ -33,9 +33,10 @@ class App extends Component {
         this.updateMessages(data);
       });
       this.socket.on("initialize", data => {
-        this.updateRooms(data.rooms);
+        // this.updateRooms(data.rooms);
         this.setState({
-          roomName: data.rooms[0],
+          roomList:data.rooms,
+          roomName: data.currentRoom,
           messages: data.messages
         }); //setting initial room
       });
@@ -44,8 +45,7 @@ class App extends Component {
       });
 
       this.socket.on("switchRoom", data => {
-        console.log("socket method", data.roomName);
-        this.setState({ roomName: data.roomName });
+        this.setState({ roomName: data.roomName, messages: data.messages });
       });
 
   }
@@ -64,8 +64,7 @@ class App extends Component {
   };
 
   switchRoom(newRoom) {
-    console.log(`joining ${newRoom}`);
-    this.setState({ roomName: newRoom, messageData: [] });
+    this.setState({ roomName: newRoom, messages: [] });
     this.socket.emit("switchRoom", { roomName: newRoom });
   }
 
