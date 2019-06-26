@@ -49,6 +49,7 @@ class Login extends Component {
             Let me in.
           </button>
         </form>
+        <small>New accounts will be automatically created</small>
       </div>
     );
   }
