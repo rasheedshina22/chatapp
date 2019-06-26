@@ -17,7 +17,7 @@ class App extends Component {
       messages: [],
       roomList: [],
       roomName: null,
-      username: "null"
+      username: null
     };
     this.environmentPort =
       process.env.NODE_ENV !== "production" ? "http://localhost:3030" : "/"; //used to set port either to 3030 or /

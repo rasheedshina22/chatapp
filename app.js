@@ -1,9 +1,13 @@
 const express = require('express');
+const cors = require("cors")
 const app = express()
 const bodyParser = require('body-parser')
 const path = require("path")
 
 //routing
+app.use(cors({
+  origin:"http://localhost:3000"
+}))
 const router = require('./api/routes/router');
 const User = require('./api/models/userModel');
 

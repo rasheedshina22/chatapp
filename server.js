@@ -20,7 +20,7 @@ mongoose.connect('mongodb://admin:securepassword1@ds225010.mlab.com:25010/whatsa
 const io = require('socket.io').listen(server);
 //list of users currently logged in
 let users ={} ;
-let roomList =["main"]
+let roomList =[]
 
 let count = 0;
 
@@ -32,38 +32,44 @@ io.on('connection',(socket)=>{
   //initializing socket properties
   socket.username = null
   socket.on("username",(data)=>{
-    console.log("usrname called")
     socket.username = data.username
   })
   socket.room = 'main';
   count++;
-  const getMessages =async ()=>{
-   return await Helper.fetchMessagesByRoom()
+  const getMessages =async (roomName)=>{
+   return await Helper.fetchMessagesByRoom(roomName)
+  }
+  const getRooms = async ()=>{
+    return await Helper.fetchAllRooms()
   }
 
+  getRooms().then(result=>{
+    roomList= result
+  })
   getMessages().then((result)=>{
       //user first assigned to room 1
   socket.join(socket.room,()=>{
     socket.emit("roomChange")
   })
-    socket.emit("initialize",{countValue:count,username:socket.username, rooms:roomList, messages: result})
+    socket.emit("initialize",{currentRoom:socket.room,username:socket.username, rooms:roomList, messages: result})
   })
 
   socket.on("createRoom",(data)=>{
     //user creates new room event
     roomList.push(data.roomName)
+    Helper.addRoom(data.roomName)
     io.sockets.emit("createRoom",{rooms:roomList})
   })
 
   socket.on("switchRoom",(data)=>{
     //changing between rooms
-    console.log("room switched to ", data.roomName)
     const roomName = data.roomName
     socket.room = roomName
     socket.leaveAll()
     socket.join(socket.room,()=>{
-      console.log(roomName)
-      socket.emit("switchRoom",{roomName:roomName})
+      getMessages(roomName).then(result=>{
+        socket.emit("switchRoom",{roomName:socket.room, messages: result})
+      })
     })
   })
 
