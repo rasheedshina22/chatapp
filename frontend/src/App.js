@@ -112,9 +112,9 @@ class App extends Component {
   }
 
   render() {
-    // if (!this.state.username) {
-    //   return <Login login={this.userLogin.bind(this)} />;
-    // }
+    if (!this.state.username) {
+      return <Login login={this.userLogin.bind(this)} />;
+    }
     return (
       <div className="app">
         <section className="side-section">
