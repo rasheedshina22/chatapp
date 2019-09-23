@@ -51,10 +51,12 @@ class App extends Component {
   }
 
   componentDidUpdate(){
-    if(!this.state.username){
+    console.log("component did update")
+    if(this.state.username){
       this.socket.emit("username", { username: this.state.username });
     }
   }
+  
   updateMessages = data => {
     //called when new message received
     let msgData = [];
