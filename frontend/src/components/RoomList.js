@@ -10,9 +10,9 @@ class RoomList extends Component {
   }
 
   renderElement(roomName, index){
-    const active = roomName === this.props.selectedRoom ? { color: "#FFA011", fontSize:"1.2rem"} : {}
+    const active = roomName === this.props.selectedRoom ? {color:"#FFC42D", fontWeight: 'bold',} : {}
   return(
-    <li key={index} className={"room "}>
+    <li key={index} className={"room"}>
         <a
           style={active}
           href={`#${roomName}`}
@@ -28,8 +28,8 @@ class RoomList extends Component {
   render() {
   return (
     <div className="rooms-list">
+    <h3>Rooms</h3>
     <ul>
-      <h3 style={styles.headerStyle}>Available Rooms</h3>
       {this.props.roomList.map((roomName, index) => {
       //selected room
       return (
@@ -43,10 +43,3 @@ class RoomList extends Component {
 }
 
 export { RoomList };
-
-const styles = {
-  headerStyle: {
-  fontSize: 22,
-  color:"#cfddf4"
-  }
-};

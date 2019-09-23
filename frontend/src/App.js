@@ -51,7 +51,7 @@ class App extends Component {
   }
 
   componentDidUpdate(){
-    if(this.state.username){
+    if(!this.state.username){
       this.socket.emit("username", { username: this.state.username });
     }
   }
@@ -112,22 +112,26 @@ class App extends Component {
   }
 
   render() {
-    if (!this.state.username) {
-      return <Login login={this.userLogin.bind(this)} />;
-    }
+    // if (!this.state.username) {
+    //   return <Login login={this.userLogin.bind(this)} />;
+    // }
     return (
       <div className="app">
+        <section className="side-section">
         <RoomList
           switchRoom={this.switchRoomHandle}
           selectedRoom={this.state.roomName}
           roomList={this.state.roomList}
         />
+        <NewRoomForm addRoom={this.addRoomHandle} />
+        </section>
+        <main className="main-section">
         <MessageList
           messageData={this.state.messages}
           currentUser={this.state.username}
         />
         <SendMessageForm sendMessage={this.sendMessageHandle} />
-        <NewRoomForm addRoom={this.addRoomHandle} />
+        </main>
       </div>
     );
   }
