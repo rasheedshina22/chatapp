@@ -11,6 +11,7 @@
 .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] { filter: none; background-color: #4a77d4; }
 .btn-block { width: 100%; display:block; }
 .btn {
+    border:0;
     background: #FFC42D;
     color: #002A51;
 }
