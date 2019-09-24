@@ -3,13 +3,14 @@ import React from "react";
 const Message = props => {
   const currentUser = props.currentUser === props.username ? "Me" : null;
   return (
-    <div className="message" style={currentUser ? {border:0,justifyItems:"center",color:"#FFC42D",boxShadow:"0.5px 0.8px 5px rgba(255, 196, 45, 0.4)"} : {}}>
+    <div className="message" style={currentUser ? {border:0,justifyItems:"center",color:"#FFC42D",background:"#FFC42D",borderRight: "5px solid #fffffa", marginRight:15} : {}}>
       <div className="message-username"
-        style={currentUser?{fontSize:16, color:"#FFC42D" }:{}}
+        style={currentUser?{fontWeight:"bold", color:"#002343" }:{}}
       >
         {currentUser || props.username}</div>
       <div
         className="message-text"
+        style={{color:"#002343"}}
         >
         {props.text}
       </div>

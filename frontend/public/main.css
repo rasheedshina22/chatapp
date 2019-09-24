@@ -154,6 +154,7 @@ html, body {
 
 .message {
     margin: 20px 30px;
+    border-radius: 3px;
     display:flex;
     flex:1;
     max-width: 420px;
