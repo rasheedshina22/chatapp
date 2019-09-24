@@ -1,12 +1,4 @@
 
-/* :root {
-    --main-color: #002244;
-    --secondary-color: #eee;
-    --main-text-color: #7280ad;
-    --secondary-text-color: #e1e6e8;
-    --send-message-form: #fffffa;
-} */
-
 :root {
     --main-color: #002343;
     --secondary-color: #002A51;
@@ -14,6 +6,7 @@
     --secondary-text-color: #e1e6e8;
     --send-message-form: #002343;
     --highlight-color: #FFC42D;
+    --faded-highlight-color:#ffffaa;
     --new-room-color: #002343;
     --faded-text: #aaa
 }
@@ -24,7 +17,7 @@ html, body {
     padding: 0;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
-    color: 	#3e5869; 
+    color: 	#3e5869;
 }
 
 #root {
@@ -35,12 +28,14 @@ html, body {
 .app {
     width:100%;
     display: flex;
+    /* margin:0 auto */
+
 }
 
 .side-section {
     /* left side section */
     display: flex;
-    flex:0 1 100px;
+    flex:1;
     height: 100%;
     flex-direction: column;
 }
@@ -48,7 +43,7 @@ html, body {
 .main-section {
     display: flex;
     flex-direction: column;
-    flex:3;
+    flex:3
 }
 
 .container {
@@ -108,10 +103,8 @@ html, body {
 }
 
 .rooms-list .room a:active {
-    /* color: red; */
     background-color: #fffffa;
     padding:10px;
-    /* text-decoration: none; */
 }
 
 .new-room-form {
@@ -160,22 +153,29 @@ html, body {
 }
 
 .message {
-    margin: 15px;
+    margin: 20px 30px;
+    display:flex;
+    flex:1;
+    max-width: 420px;
+    align-items: center;
+    height: 60px;
+    background: var(--main-color);
+    border-left: 5px solid var(--highlight-color);
 }
 
 .message .message-username {
     font-size: 12px;
-    color: var(--main-text-color);
+    color: #ccc;
     opacity: 0.9;
-    margin-bottom: 6px;
+    margin: 10px;
+    flex:1 0 100px;
+    padding-left: 10px
 }
 .message .message-text {
-    background: var(--highlight-color);
-    color: var(--secondary-color);
-    display: inline;
+    flex:4 1 300px;
+    color: var(--secondary-text-color);
     /* margin-top:10px; */
-    padding: 4px 8px;
-    border-radius: 6px;
+    border-radius: 2px;
 }
 
 .message-list {
