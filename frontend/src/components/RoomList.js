@@ -28,7 +28,7 @@ class RoomList extends Component {
   render() {
   return (
     <div className="rooms-list">
-    <h3>Rooms</h3>
+    <h3>Available Rooms</h3>
     <ul>
       {this.props.roomList.map((roomName, index) => {
       //selected room

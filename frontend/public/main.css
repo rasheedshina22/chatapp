@@ -62,6 +62,7 @@ html, body {
 
 /* REST OF CSS */
 .rooms-list {
+    margin:0 auto;
     box-sizing: border-box;
     padding: 20px;
     background-color: var(--main-color);
@@ -73,17 +74,19 @@ html, body {
     padding: 0;
     overflow: scoll;
     width:100%;
-    align-items:  stretch;
+    align-items:  center;
 }
 
 .rooms-list li {
-    margin: 10px 0;
+    margin: 15px 0;
+    font-size: 16;
+    text-transform: capitalize
 }
 
 .rooms-list > h3 {
     font-family: 'Raleway', sans-serif;
     color: #B5FFAF;
-    font-size: 24px
+    font-size: 18px
 }
 
 .rooms-list .room a {
