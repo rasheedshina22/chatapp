@@ -51,7 +51,7 @@ body {
     font-size: 1srem;
     color: #ccc;
     font-weight: 300;
-    margin: 0 auto;
+    text-align: center
 }
 
 .error {

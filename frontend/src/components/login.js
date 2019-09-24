@@ -25,7 +25,7 @@ class Login extends Component {
 
   render() {
     let button = <button type="submit" className="btn btn-primary btn-block btn-large" >
-                    Let me in.
+                    Let me in
                   </button>
     if(this.props.loading){
       button = <Spinner />
