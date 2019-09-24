@@ -147,7 +147,7 @@ html, body {
 }
 
 .message {
-    margin: 20px 30px;
+    margin: 10px;
     border-radius: 3px;
     display:flex;
     max-width: 350px;
