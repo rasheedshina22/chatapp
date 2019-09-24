@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./login.css";
+import {Spinner} from "../components/spinner"
 
 class Login extends Component {
   constructor(props) {
@@ -23,9 +24,15 @@ class Login extends Component {
   }
 
   render() {
+    let button = <button type="submit" className="btn btn-primary btn-block btn-large" >
+                    Let me in.
+                  </button>
+    if(this.props.loading){
+      button = <Spinner />
+    }
     return (
       <div className="login">
-        <h1>Login</h1>
+        <h1>ChatR</h1>
         <form method="get" onSubmit={this.submitHandle.bind(this)}>
           <input
             className="input"
@@ -45,9 +52,8 @@ class Login extends Component {
             placeholder="Password"
             required="required"
           />
-          <button type="submit" className="btn btn-primary btn-block btn-large" >
-            Let me in.
-          </button>
+          {button}
+          <span className="error">{this.props.error}</span>
         </form>
         <small>New accounts will be automatically created</small>
       </div>
