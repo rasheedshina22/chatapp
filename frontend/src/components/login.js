@@ -11,6 +11,7 @@ class Login extends Component {
     };
   }
   onChangeHandle(event) {
+    this.props.clearErrorHandler()
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -25,7 +26,7 @@ class Login extends Component {
 
   render() {
     let button = <button type="submit" className="btn btn-primary btn-block btn-large" >
-                    Let me in
+                    Let me in <i class="fa fa-key fa-1.8x" color="black"></i>
                   </button>
     if(this.props.loading){
       button = <Spinner />

@@ -95,7 +95,7 @@ class App extends Component {
     this.socket.emit("createRoom", { roomName: newRoom });
   }
 
-  userLogin({ username, password }) {
+  userLogin=({ username, password })=>{
     //used to authenticate the user
     this.setState({loading: true, error:""})
     axios.post(this.environmentPort, { password, username })
@@ -143,10 +143,14 @@ class App extends Component {
     })
   }
 
+  clearErrorHandler=()=>{
+    this.setState({error:"",loading: false})
+  }
+
   render() {
-    // if (!this.state.username) {
-    //   return <Login loading={this.state.loading} error={this.state.error} login={this.userLogin.bind(this)} />;
-    // }
+    if (!this.state.username) {
+      return <Login loading={this.state.loading} error={this.state.error} login={this.userLogin} clearErrorHandler={this.clearErrorHandler}/>;
+    }
     return (
       <div className="app">
         <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} logout={this.logout}/>
