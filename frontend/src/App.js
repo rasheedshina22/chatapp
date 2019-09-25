@@ -53,7 +53,6 @@ class App extends Component {
       this.socket.on("switchRoom", data => {
         this.setState({ roomName: data.roomName, messages: data.messages });
       });
-
   }
 
   componentDidUpdate(){
