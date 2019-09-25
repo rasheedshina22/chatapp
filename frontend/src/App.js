@@ -8,6 +8,9 @@ import {
   Login
 } from "./components";
 
+import Toolbar from "./navigation/toolbar"
+import SideDrawer from "./navigation/SideDrawer"
+
 import openSocket from "socket.io-client";
 
 class App extends Component {
@@ -19,7 +22,8 @@ class App extends Component {
       roomName: null,
       username: null,
       error:"",
-      loading: false
+      loading: false,
+      showSideBar:false
     };
     this.environmentPort =
       process.env.NODE_ENV !== "production" ? "http://localhost:3030" : "/"; //used to set port either to 3030 or /
@@ -117,12 +121,37 @@ class App extends Component {
       });
   }
 
+  showSideBar=()=>{
+    this.setState({
+      showSideBar:true,
+    })
+  }
+
+  sideDrawerToggleHandler =()=>{
+    this.setState((prevState)=>{
+      return {showSideBar: !prevState.showSideBar}
+    })
+  }
+
+  logout=()=>{
+    this.setState({
+      messages: [],
+      roomList: [],
+      roomName: null,
+      username: null,
+      error:"",
+    })
+  }
+
   render() {
-    if (!this.state.username) {
-      return <Login loading={this.state.loading} error={this.state.error} login={this.userLogin.bind(this)} />;
-    }
+    // if (!this.state.username) {
+    //   return <Login loading={this.state.loading} error={this.state.error} login={this.userLogin.bind(this)} />;
+    // }
     return (
       <div className="app">
+        <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} logout={this.logout}/>
+        <SideDrawer visible={this.state.showSideBar} toggleSideDrawer={this.sideDrawerToggleHandler} logout={this.logout}/>
+        <div className="main-area">
         <section className="side-section">
         <RoomList
           switchRoom={this.switchRoomHandle}
@@ -138,6 +167,7 @@ class App extends Component {
         />
         <SendMessageForm sendMessage={this.sendMessageHandle} />
         </main>
+        </div>
       </div>
     );
   }

@@ -12,12 +12,13 @@
 }
 
 html, body {
-    height: 100%;
+    min-height: 0;
     margin: 0;
     padding: 0;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 200;
     color: 	#3e5869;
+    overflow: auto;
 }
 
 #root {
@@ -28,6 +29,12 @@ html, body {
 .app {
     width:100%;
     display: flex;
+}
+
+.main-area {
+    flex:1;
+    display: flex;
+    margin-top: 40px;
 }
 
 .side-section {
@@ -42,6 +49,7 @@ html, body {
     display: flex;
     flex-direction: column;
     flex:4;
+    
 }
 
 .new-room-form {
@@ -53,7 +61,10 @@ html, body {
 }
 
 .message-list {
-    flex:10
+    flex:10;
+
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .send-message-form {
@@ -67,6 +78,7 @@ html, body {
     padding: 20px;
     background-color: var(--main-color);
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .rooms-list > ul {

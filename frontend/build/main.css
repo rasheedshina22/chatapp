@@ -30,6 +30,12 @@ html, body {
     display: flex;
 }
 
+.main-area {
+    flex:1;
+    display: flex;
+    margin-top: 40px
+}
+
 .side-section {
     /* left side section */
     display: flex;
