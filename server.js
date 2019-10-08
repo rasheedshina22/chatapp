@@ -27,7 +27,10 @@ let count = 0;
 //listen on every connection
 io.on('connection',(socket)=>{
   //system log
-  Helper.logEvent('connection','System')
+  /***
+   * commenting out logging 
+   * Helper.logEvent('connection','System')
+   */
   
   //initializing socket properties
   socket.username = null
@@ -47,9 +50,9 @@ io.on('connection',(socket)=>{
     roomList= result
   })
   getMessages().then((result)=>{
-      //user first assigned to room 1
-  socket.join(socket.room,()=>{
-    socket.emit("roomChange")
+    //user first assigned to room 1
+    socket.join(socket.room,()=>{
+      socket.emit("roomChange")
   })
     socket.emit("initialize",{currentRoom:socket.room,username:socket.username, rooms:roomList, messages: result})
   })

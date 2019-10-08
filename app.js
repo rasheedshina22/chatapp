@@ -5,9 +5,7 @@ const bodyParser = require('body-parser')
 const path = require("path")
 
 //routing
-app.use(cors({
-  origin:"http://localhost:3000"
-}))
+app.use(cors({ origin:"http://localhost:3000" }))
 const router = require('./api/routes/router');
 const User = require('./api/models/userModel');
 
@@ -22,6 +20,7 @@ app.use(bodyParser.json())
 app.get('/',(req,res,next)=>res.render('index'))
 
 app.post('/',(req, res)=>{
+  // handles the login logic
   const {username, password} = req.body
   User.findOne({username},'username password', function(error, result){
     if(error){

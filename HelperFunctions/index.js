@@ -23,7 +23,6 @@ class Helper{
   static saveMessage(message,username,roomname)
   //used to save message to db
   {
-      console.log(username)
       const chat = new messages({
         name:username,
         chat:message,
@@ -33,7 +32,6 @@ class Helper{
         if(err){
           return err
         }else{
-          console.log(result)
           return result
         }
     })

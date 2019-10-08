@@ -27,15 +27,18 @@ body {
     width: 100%;
     height:100%;
     font-family: 'Open Sans', sans-serif;
-    background: #002343
+    background: #002343;
 }
 .login { 
+    background: #002A51;
     position: absolute;
     top: 50%;
     left: 50%;
     margin: -150px 0 0 -150px;
-    width:300px;
-    height:300px;
+    width:320px;
+    /* height:320px; */
+    padding:20px;
+    border-radius: 5px;
 }
 
 .login h1 {
@@ -47,12 +50,18 @@ body {
     font-size: 2rem 
 }
 
-
 .login small {
-    font-size: 1srem;
-    color: #ccc;
-    font-weight: 300;
-    text-align: center
+    font-size: 16px;
+    color: #FFC42D;
+    font-weight: 800;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none
+}
+
+.login small:hover {
+    cursor: pointer
 }
 
 .error {
