@@ -195,9 +195,6 @@ html, body {
 .message .message-text {
     flex:4 0;
     padding: 10px;
-    /* white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; */
     color: var(--secondary-text-color);
 }
 

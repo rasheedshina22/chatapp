@@ -26,7 +26,6 @@ let count = 0;
 
 //listen on every connection
 io.on('connection',(socket)=>{
-  //system log
   /***
    * commenting out logging 
    * Helper.logEvent('connection','System')
