@@ -26,11 +26,6 @@ let count = 0;
 
 //listen on every connection
 io.on('connection',(socket)=>{
-  /***
-   * commenting out logging 
-   * Helper.logEvent('connection','System')
-   */
-  
   //initializing socket properties
   socket.username = null
   socket.on("username",(data)=>{
@@ -75,14 +70,15 @@ io.on('connection',(socket)=>{
     })
   })
 
-  //each socket object represents a client instance
+  /**each socket object represents a client instance */
   socket.on('change_username',(data)=>{
     socket.username = data.username;
   })
   //listening on new message
   socket.on("new_message",(data)=>{
-    //broadcasting the message. io.sockets is an object of all sockets
-    //Helper.saveMessage saves to db
+    /**broadcasting the message. io.sockets is an object of all sockets
+      Helper.saveMessage saves to db 
+    **/
     Helper.saveMessage(data.message,socket.username,socket.room)
     io.sockets.in(socket.room).emit("new_message",{ chat:data.message, name:socket.username,date: new Date()})
     // io.sockets.emit("new_message",{message:data.message, username:socket.username})
@@ -105,7 +101,9 @@ io.on('connection',(socket)=>{
     io.sockets.to(socket.room).emit("keyup")
   })
   socket.on('disconnect',(data)=>{
-    Helper.logEvent('disconnect',socket.username)
+    //event emitted when connection broken
+    socket.emit("disconnected")
+    // Helper.logEvent('disconnect',socket.username)
   })  
   socket.on('disconnecting',(data)=>{
     count--;    //reduce count

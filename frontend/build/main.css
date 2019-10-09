@@ -174,9 +174,9 @@ html, body {
     margin: 10px;
     border-radius: 3px;
     display:flex;
-    max-width: 350px;
+    width: 350px;
     align-items: center;
-    height: 40px;
+    min-height: 40px;
     background: var(--main-color);
     border-left: 5px solid var(--highlight-color);
     border-radius: 2px;
@@ -193,7 +193,7 @@ html, body {
     text-align: center
 }
 .message .message-text {
-    flex:4 0 300px;
+    flex:4 0;
     padding: 10px;
     color: var(--secondary-text-color);
 }

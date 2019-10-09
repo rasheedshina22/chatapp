@@ -19,28 +19,55 @@ app.use(bodyParser.json())
 //routes
 app.get('/',(req,res,next)=>res.render('index'))
 
-app.post('/',(req, res)=>{
+app.post('/login',(req, res)=>{
   // handles the login logic
   const {username, password} = req.body
   User.findOne({username},'username password', function(error, result){
     if(error){
-      res.status(400).json({message:"authentication failed"})
+      res.status(500).json({message:"authentication failed"})
     }
     if(result){
-      //if user found confirm password
+      /*if result found verify password 
+      * status 200 on success and 201 on incorrect password
+      ***/
       password === result.password ? res.status(200).json(result) : res.status(201).json({message:"authentication failed"}) 
-    }else{
+    }
+    else{
       //user not found
+      return res.status(202).json({message:"user not found"})
+    //   const user = new User({password,username})
+    //   user.save()
+    //     .then(result=>{
+    //       res.status(200).json(result)
+    //     }).catch(error=>{
+    //       res.status(500).json({message:"something went wrong"})
+    //     })
+    }
+  })
+})
+
+app.post('/signup',(req, res)=>{
+  // handles the login logic
+  const {username, password} = req.body
+  User.findOne({username}, function(error, result){
+    if(error){
+      res.status(500).json({message:"authentication failed"})
+    }
+    if(result){
+      console.log(result)
+      res.status(201).json({message:"User exists"})
+    }
+    else{
       const user = new User({password,username})
       user.save()
         .then(result=>{
           res.status(200).json(result)
         }).catch(error=>{
-          res.status(500).json({message:"something went wrong"})
+          console.log(error)
+          res.status(500).json({message:"Oops, Something went wrong"})
         })
     }
   })
-  
 })
 
 /* api routes*/
