@@ -202,7 +202,8 @@ html, body {
 .message-list {
     box-sizing: border-box;
     padding:20px;
-    background: var(--secondary-color);
+    /* background: var(--secondary-color); */
+    background: #fff
 }
 
 .message-list .join-room {
