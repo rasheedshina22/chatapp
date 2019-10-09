@@ -96,7 +96,7 @@ class App extends Component {
   userLoginHandle = ({ username, password }) => {
     //used to login the user
     this.setState({ loading: true, error: "" });
-    axios.post(this.serverUrl+"/login", { password, username })
+    axios.post(this.serverUrl+"login", { password, username })
       .then(response => {
         if (response.status === 200) {
           // auth success
@@ -125,7 +125,7 @@ class App extends Component {
   userSignupHandle=({username,password})=>{
     /***creates new user in db */
     this.setState({loading:true})
-    axios.post(this.serverUrl + "/signup",{username,password})
+    axios.post(this.serverUrl + "signup",{username,password})
       .then(response=>{
         if (response.status === 200) {
           // auth success

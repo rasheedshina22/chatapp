@@ -35,13 +35,6 @@ app.post('/login',(req, res)=>{
     else{
       //user not found
       return res.status(202).json({message:"user not found"})
-    //   const user = new User({password,username})
-    //   user.save()
-    //     .then(result=>{
-    //       res.status(200).json(result)
-    //     }).catch(error=>{
-    //       res.status(500).json({message:"something went wrong"})
-    //     })
     }
   })
 })
