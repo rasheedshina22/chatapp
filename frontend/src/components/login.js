@@ -13,6 +13,16 @@ class Login extends Component {
     };
   }
 
+  componentDidUpdate(prevProps,prevState){
+    if(this.props.error && this.props.error !== prevProps.error){
+        /** checking the an error exists and
+         *  clearing the password field*/ 
+        this.setState({
+          password:""
+        })
+    }
+  }
+
   onChangeHandle(event){
     this.props.clearErrorHandler()
     this.setState({
@@ -35,7 +45,7 @@ class Login extends Component {
 
   render() {
     let button = <button type="submit" className="btn btn-primary btn-block btn-large" >
-                    {this.state.registrationLinkActive ? "Create Account" :"Let me in"} <i class="fa fa-key fa-1.8x" color="black"></i>
+                    {this.state.registrationLinkActive ? "Create Account" :"Let me in"} <i className="fa fa-key fa-1.8x" color="black"></i>
                   </button>
 
     let registrationLink = this.state.registrationLinkActive ? ( <input className="input"
@@ -73,9 +83,5 @@ class Login extends Component {
   }
 }
 
-const styles ={
-  createAccBtn:{
-    color: "#FFC42D"
-  }
-}
+
 export { Login };

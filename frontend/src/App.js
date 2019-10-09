@@ -107,7 +107,7 @@ class App extends Component {
         } else {
           this.setState({
             loading: false,
-            error: "something went wrong"
+            error: "We expected something different"
           });
         }
       })
