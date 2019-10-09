@@ -1,3 +1,4 @@
+export * from './button'
 export * from './Message'
 export * from './MessageList'
 export * from './NewRoomForm'

@@ -25,7 +25,7 @@ class App extends Component {
       loading: false,
       showSideBar: false
     };
-    this.environmentPort = process.env.NODE_ENV !== "production" ? "http://localhost:3030" : "/"; //used to set port either to 3030 or /
+    this.serverUrl = process.env.NODE_ENV !== "production" ? "http://localhost:3030" : "/"; //used to set port either to 3030 or /
     this.sendMessageHandle = this.sendMessage.bind(this);
     this.addRoomHandle = this.addRoom.bind(this);
     this.switchRoomHandle = this.switchRoom.bind(this);
@@ -33,7 +33,7 @@ class App extends Component {
 
   componentDidMount() {
     //setting up socket
-    this.socket = openSocket.connect(this.environmentPort); //when running locally connect to localhost:3030
+    this.socket = openSocket.connect(this.serverUrl); //when running locally connect to localhost:3030
     this.socket.on("new_message", data => {
       this.updateMessages(data);
     });
@@ -54,8 +54,8 @@ class App extends Component {
     });
   }
 
-  componentDidUpdate() {
-    if (this.state.username) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.username && this.state.username !== prevState.username) {
       this.socket.emit("username", { username: this.state.username });
     }
   }
@@ -93,30 +93,70 @@ class App extends Component {
     this.socket.emit("createRoom", { roomName: newRoom });
   }
 
-  userLogin = ({ username, password }) => {
-    //used to authenticate the user
+  userLoginHandle = ({ username, password }) => {
+    //used to login the user
     this.setState({ loading: true, error: "" });
-    axios.post(this.environmentPort, { password, username })
+    axios.post(`${this.serverUrl}/login`, { password, username })
       .then(response => {
-        if (response.status === 200) {  
+        if (response.status === 200) {
+          // auth success
           this.setState({
-            loading: false,
             error: "",
             username: response.data.username
           });
-        } else {
-          this.setState({
-            loading: false,
-            error: "We expected something different"
-          });
+        } else if(response.status === 201) {
+          // auth fail=> incorrect password
+          this.setState({ error: "Oops, not what we expected" });
+        }else if(response.status === 202){
+          this.setState({ error: "User not found" });
+        }else{
+          this.setState({error:"Something went wrong"})
         }
       })
       .catch(error => {
-        this.setState({
-          username: null,
+        this.setState({ username: null,
           error: "something went wrong"
-        });
-      });
+        })
+      }).finally(()=>this.setState({loading: false})
+          // final block stops the spinner on promise rejection or fulfillment
+      )
+  }
+
+  userSignupHandle=({username,password})=>{
+    /***creates new user in db */
+    this.setState({loading:true})
+    axios.post(`${this.serverUrl}/signup`,{username,password})
+      .then(response=>{
+        if (response.status === 200) {
+          // auth success
+          this.setState({
+            error: "",
+            username: response.data.username
+          });
+        } else if(response.status === 201) {
+          // signup fail=> email exists
+          this.setState({ error: "User already exists" });
+        }else{
+          this.setState({error:"Something went wrong"})
+        }
+      }).catch(error=>{
+        this.setState({ username: null,
+          error: "something went wrong"
+        })
+      }).finally(()=>{
+        this.setState({loading: false})
+      })
+    
+  }
+
+  logout = () => {
+    this.setState({
+      messages: [],
+      roomList: [],
+      roomName: null,
+      username: null,
+      error: ""
+    });
   };
 
   showSideBar = () => {
@@ -131,16 +171,6 @@ class App extends Component {
     });
   };
 
-  logout = () => {
-    this.setState({
-      messages: [],
-      roomList: [],
-      roomName: null,
-      username: null,
-      error: ""
-    });
-  };
-
   clearErrorHandler = () => {
     this.setState({ error: "", loading: false });
   };
@@ -148,8 +178,8 @@ class App extends Component {
   render() {
     if (!this.state.username) {
       return (
-        <Login loading={this.state.loading} 
-           error={this.state.error} login={this.userLogin} 
+        <Login loading={this.state.loading} signup={this.userSignupHandle}
+           error={this.state.error} login={this.userLoginHandle} 
            clearErrorHandler={this.clearErrorHandler}
         />
       );
