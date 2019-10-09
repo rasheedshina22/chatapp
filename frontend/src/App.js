@@ -25,7 +25,7 @@ class App extends Component {
       loading: false,
       showSideBar: false
     };
-    this.serverUrl = process.env.NODE_ENV !== "production" ? "http://localhost:3030" : "/"; //used to set port either to 3030 or /
+    this.serverUrl = process.env.NODE_ENV !== "production" ? "http://localhost:3030/" : "/"; //used to set port either to 3030 or /
     this.sendMessageHandle = this.sendMessage.bind(this);
     this.addRoomHandle = this.addRoom.bind(this);
     this.switchRoomHandle = this.switchRoom.bind(this);

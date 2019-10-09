@@ -174,23 +174,24 @@ html, body {
     margin: 10px;
     border-radius: 3px;
     display:flex;
-    width: 350px;
+    width: 380px;
     align-items: center;
     min-height: 40px;
     background: var(--main-color);
-    border-left: 5px solid var(--highlight-color);
-    border-radius: 2px;
+    border-left: 3px solid var(--highlight-color);
+    border-radius: 8px
 }
 
 .message .message-username {
     font-size: 12px;
     padding: 10px;
     font-weight: bold;
-    background-color: var(--highlight-color);
-    color: var(--secondary-color);
-    margin: 10px;
-    flex:1 0 120px;
-    text-align: center
+    color: var(--highlight-color);
+    margin: 5px;
+    flex:1 0 80px;
+    height:100%;
+    text-align: center;
+    border-right:1px solid #FFC42D;
 }
 .message .message-text {
     flex:4 0;
@@ -214,8 +215,7 @@ html, body {
 }
 
 .send-message-form {
-    background: var(--send-message-form);
-    /* display: flex; */
+    background: var(--send-message-form)
 }
 
 .send-message-form input {
