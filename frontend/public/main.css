@@ -171,13 +171,12 @@ html, body {
 
 .message {
   margin: 10px;
-  border-radius: 3px;
   display:flex;
   width: 400px;
   align-items: center;
   min-height: 40px;
   background: var(--main-color);
-  border-left: 3px solid var(--highlight-color);
+  border-left: 5px solid var(--highlight-color);
   border-radius: 8px
 }
 
