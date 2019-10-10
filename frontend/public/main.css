@@ -263,8 +263,8 @@ html, body {
     color: #002343;
     font-size: 14px;
     font-weight: bold;
-    border-radius: 3px
-
+    border-radius: 3px;
+    display: inline-block
   }
   .message {
       margin:10px auto;
