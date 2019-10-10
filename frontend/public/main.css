@@ -241,6 +241,10 @@ html, body {
   position: absolute;
   top: 10px;
 }
+.send-message-form input[type=submit] {
+  display: none
+}
+
 
 @media(max-width:500px){
   .send-message-form {
