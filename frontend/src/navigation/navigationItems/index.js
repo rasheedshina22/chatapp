@@ -5,8 +5,8 @@ import NavigationItem  from "./navigationItem"
 const navigationItems = props => {
   const authenticatedRoutes = (          
     <React.Fragment>
-      {/* <NavigationItem link="/">Orders</NavigationItem> */}
-      <NavigationItem link="/"><button onClick={props.logout}>Logout</button></NavigationItem>
+      <NavigationItem link="#"><button >Switch Room</button></NavigationItem>
+      <NavigationItem link="/"><button onClick={props.logout}>Logout &nbsp;&nbsp;<i className="fa fa-lock"></i></button></NavigationItem>
     </React.Fragment>
   )
   return (

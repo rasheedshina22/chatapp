@@ -10,6 +10,7 @@
 .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] { filter: none; background-color: #4a77d4; }
 .btn-block { width: 100%; display:block; }
 .btn {
+    font-family:Oswald, sans-serif;
     border:0;
     background: #FFC42D;
     color: #002A51;
@@ -39,7 +40,6 @@ body {
     left: 50%;
     margin: -150px 0 0 -150px;
     width:320px;
-    /* height:320px; */
     padding:20px;
     border-radius: 5px;
 }
@@ -54,10 +54,11 @@ body {
 }
 
 .login small {
-    font-size: 16px;
+    font-size: 18px;
     color: #FFC42D;
     font-weight: 800;
     display: block;
+    font-family:Oswald, sans-serif;
     text-align: center;
     margin-top: 20px;
     text-decoration: none
@@ -104,3 +105,10 @@ body {
 .spinner {
     height: 60px
 }
+
+@media(max-width: 500px){
+    /* phone devices */
+    .btn {
+        font-size: 18px
+    }
+  }

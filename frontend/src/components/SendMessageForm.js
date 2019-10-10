@@ -28,10 +28,12 @@ class SendMessageForm extends Component {
                   onSubmit={this.handleSubmit}
             >
                 <input
+                    className="form-input"
                     onChange={this.handleChange}
                     value={this.state.message}
                     placeholder="Start typing... Enter to send"
                     type="text" />
+                <input type="submit" value="Send" className="send-form-btn"></input>
             </form>
         )
     }

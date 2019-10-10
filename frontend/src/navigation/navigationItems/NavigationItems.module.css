@@ -5,7 +5,7 @@
     display: flex;
     flex-flow: column;
     height: 100%;
-    color:#fff
+    color:#fff;
 }
 
 @media(min-width: 500px){
