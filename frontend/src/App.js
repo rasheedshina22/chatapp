@@ -176,7 +176,7 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.username) {
+    if (!this.state.username) {
       return (
         <Login loading={this.state.loading} signup={this.userSignupHandle}
            error={this.state.error} login={this.userLoginHandle} 
