@@ -260,12 +260,13 @@ html, body {
 
   .send-message-form input[type=submit] {
     flex:1;
+    height: 100%;
     border: none;
-    background: #FFC42D;
-    color: #002343;
+    background: transparent;
+    color: #FFC42D;
     font-size: 14px;
     font-weight: bold;
-    border-radius: 3px;
+    align-self: center;
     display: inline-block
   }
   .message {
