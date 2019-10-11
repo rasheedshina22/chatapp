@@ -86,8 +86,10 @@ html, body {
 .rooms-list > ul {
   list-style-type: none;    
   padding: 0;
+  margin:10px;
   overflow: scoll;
   width: 100%;
+  text-align: left;
   align-items: center;
 }
 
@@ -176,8 +178,8 @@ html, body {
   align-items: center;
   min-height: 40px;
   background: var(--main-color);
-  border-left: 5px solid var(--highlight-color);
-  border-radius: 8px
+  border-left: 6px solid var(--highlight-color);
+  border-radius: 10px
 }
 
 .message .message-username {

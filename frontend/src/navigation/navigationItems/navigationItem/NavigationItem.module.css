@@ -1,9 +1,9 @@
 .NavigationItem {
-  margin: 10px 10px;
+  margin: 5px;
   box-sizing: border-box;
   display: flex;
   height: 100%;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .NavigationItem button {
@@ -27,7 +27,7 @@
 @media(min-width: 500px){
   /* desktop devices */
   .NavigationItem {
-    margin: 10px 20px;
+    margin: 10px;
     display: block;
     height: 100%;
     width: auto;

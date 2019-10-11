@@ -1,12 +1,23 @@
 import React, { Component } from "react";
 
 class RoomList extends Component {
-  switchRoom(roomName) {
-  this.props.switchRoom(roomName);
+  state ={
+    roomList:[]
   }
-
+  switchRoom(roomName) {
+    this.props.switchRoom(roomName);
+  }
   componentDidMount(){
-
+    this.setState({
+      roomList: this.props.roomList
+    })
+  }
+  componentDidUpdate(prevProps, prevState){
+    if(this.props.roomList !== prevProps.roomList){
+      this.setState({
+        roomList: this.props.roomList
+      })
+    }
   }
 
   renderElement(roomName, index){
@@ -30,7 +41,7 @@ class RoomList extends Component {
     <div className="rooms-list">
     <h3>Available Rooms</h3>
     <ul>
-      {this.props.roomList.map((roomName, index) => {
+      {this.state.roomList.map((roomName, index) => {
       //selected room
       return (
         this.renderElement(roomName,index)
