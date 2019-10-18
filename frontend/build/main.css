@@ -34,6 +34,7 @@ html, body {
 }
 
 .main-area {
+    /* container */
     flex:1;
     display: flex;
     margin-top: 40px;
@@ -51,7 +52,6 @@ html, body {
     display: flex;
     flex-direction: column;
     flex:4;
-   
 }
 
 .new-room-form {

@@ -10,7 +10,7 @@ const toolbar =props =>{
     <header className={classes.Toolbar}>
       <ToggleButton click={props.drawerToggleClicked}/>
       <div className={classes.Logo}>
-        {/* <Logo /> */}
+        <h2>Jibba•Jabba</h2>
       </div>
       <nav className={classes.DesktopOnly}>
         <NavigationItems isAuthenticated={props.isAuthenticated} logout={props.logout}/>
