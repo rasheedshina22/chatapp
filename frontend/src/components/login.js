@@ -111,7 +111,7 @@ class Login extends Component {
     }
     return (
       <div className="login">
-        <h1>Chat•R</h1>
+        <h1>Jibba•Jabba</h1>
         <form method="get" onSubmit={this.submitHandle.bind(this)}>
           <input
             className="input"
