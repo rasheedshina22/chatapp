@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gupter&display=swap');
 :root {
   --main-color: #002343;
   --secondary-color: #002A51;
@@ -15,9 +16,7 @@ html, body {
   min-height: 0;
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 200;
-  color: 	#3e5869;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch
 }
@@ -79,7 +78,6 @@ html, body {
   padding: 20px;
   background-color: var(--main-color);
   overflow: scroll;
-
   -webkit-overflow-scrolling: touch;
 }
 
@@ -108,7 +106,8 @@ html, body {
   text-align: center;
   font-family: 'Raleway', sans-serif;
   color: #B5FFAF;
-  font-size: 18px
+  font-size: 18px;
+  margin-top: 20px
 }
 
 .rooms-list .room a {
@@ -172,31 +171,33 @@ html, body {
 }
 
 .message {
-  margin: 10px;
+  padding: 5px;
+  margin: 7px;
   display:flex;
-  width: 400px;
   align-items: center;
   min-height: 40px;
-  background: var(--main-color);
-  border-left: 6px solid var(--highlight-color);
-  border-radius: 10px
+  border-radius: 5px;
+  font-weight: 800;
+  max-width: 500px;
 }
 
 .message .message-username {
-  font-size: 14px;
+  flex: 1 0;
+  width: 80px;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
   padding: 10px;
-  font-weight: bold;
-  color: var(--highlight-color);
-  margin: 5px;
-  flex:1 0 80px;
-  height:100%;
-  text-align: center;
-  border-right:1px solid #FFC42D
 }
 .message .message-text {
   flex:4 0;
-  padding: 10px;
-  color: var(--secondary-text-color);
+  margin-left: 10px;
+  font-size:16px;
+  padding: 7px;
+  color: var(--main-color);
+  font-family: 'Gupter', serif;
+	box-shadow: 1px 2px 5px 1px #ddd;
 }
 
 .message-list {
@@ -220,11 +221,11 @@ html, body {
 
 .send-message-form input {
   width: 100%;
-  padding: 15px 10px;
+  padding: 10px;
   margin: 0;
   border-style: none;
   background: var(--send-message-form);
-  font-weight: 200;
+  font-weight: 100;
   color: var(--secondary-text-color);
   font-size:14px
 }
@@ -235,7 +236,7 @@ html, body {
 
 .send-message-form input::placeholder {
   color: var(--faded-text);
-  font-weight: 400
+  font-weight: 100
 }
 
 .help-text {
@@ -261,18 +262,15 @@ html, body {
   .send-message-form input[type=submit] {
     flex:1;
     height: 100%;
-    border: none;
-    background: transparent;
+    background: rgba(255, 255, 255,0.1);
     color: #FFC42D;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
     align-self: center;
-    display: inline-block
+    display: inline-block;
+    font-family: 'Gupter', serif;
   }
-  .message {
-      margin:10px auto;
-      width: 95%
-  }
+
   .message-username{
     flex: 1 0;
     width: 60px;

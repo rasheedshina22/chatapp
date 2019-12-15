@@ -1,102 +1,101 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gupter&display=swap');
 :root {
-    --main-color: #002343;
-    --secondary-color: #002A51;
-    --main-text-color: #fff;
-    --secondary-text-color: #e1e6e8;
-    --send-message-form: #002343;
-    --highlight-color: #FFC42D;
-    --faded-highlight-color:#ffffaa;
-    --new-room-color: #002343;
-    --faded-text: #aaa
+  --main-color: #002343;
+  --secondary-color: #002A51;
+  --main-text-color: #fff;
+  --secondary-text-color: #e1e6e8;
+  --send-message-form: #002343;
+  --highlight-color: #FFC42D;
+  --faded-highlight-color:#ffffaa;
+  --new-room-color: #002343;
+  --faded-text: #aaa
 }
 
 html, body {
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-weight: 200;
-    color: 	#3e5869;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  font-weight: 200;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch
 }
 
 #root {
-    height: 100%;
-    display: flex;
-    
+  height: 100%;
+  display: flex;
 }
 
 .app {
-    width:100%;
-    display: flex;
+  width:100%;
+  display: flex;
 }
 
 .main-area {
-    /* container */
-    flex:1;
-    display: flex;
-    margin-top: 40px;
+  flex:1;
+  display: flex;
+  margin-top: 40px;
 }
 
 .side-section {
-    /* left side section */
-    display: flex;
-    flex:0 1 100px;
-    height: 100%;
-    flex-direction: column;
+  /* left side section */
+  display: flex;
+  flex:0 1 100px;
+  height: 100%;
+  flex-direction: column;
 }
 
 .main-section {
-    display: flex;
-    flex-direction: column;
-    flex:4;
+  display: flex;
+  flex-direction: column;
+  flex:4;
+   
 }
 
 .new-room-form {
-    flex:1
+  flex:1
 }
 
 .rooms-list {
-    flex:10
+  flex:10
 }
 
 .message-list {
-    flex:10;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+  flex:9;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .send-message-form {
-    flex:1
+  flex:1;
 }
 
 /* REST OF CSS */
 .rooms-list {
-    margin:0 auto;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 20px;
-    background-color: var(--main-color);
-    overflow: scroll;
-
-    -webkit-overflow-scrolling: touch;
+  margin:0 auto;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: var(--main-color);
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 .rooms-list > ul {
-    list-style-type: none;    
-    padding: 0;
-    overflow: scoll;
-    width:100%;
-    align-items:  center;
+  list-style-type: none;    
+  padding: 0;
+  margin:10px;
+  overflow: scoll;
+  width: 100%;
+  text-align: left;
+  align-items: center;
 }
 
 .rooms-list li {
-    margin: 15px 0;
-    font-size: 16px;
-    padding:20x;
-    text-transform: capitalize
+  margin: 15px 0;
+  font-size: 16px;
+  padding:20x;
+  text-transform: capitalize
 }
 
 .rooms-list li .active {
@@ -104,141 +103,222 @@ html, body {
 }
 
 .rooms-list > h3 {
-    text-align: center;
-    font-family: 'Raleway', sans-serif;
-    color: #B5FFAF;
-    font-size: 18px
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  color: #B5FFAF;
+  font-size: 18px;
+  margin-top: 20px
 }
 
 .rooms-list .room a {
-    color: var(--secondary-text-color);
-    font-weight: 700;
-    text-decoration: none;
-    text-transform: capitalize
+  color: var(--secondary-text-color);
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: capitalize
 }
 .rooms-list .room a:hover {
-    cursor:pointer;
+  cursor:pointer;
 }
 
 .rooms-list .room a:active {
-    background-color: #fffffa;
-    padding:10px;
+  background-color: #fffffa;
+  padding:10px;
 }
 
 .new-room-form {
-    border: .2px rgba(255,255,230,.4) solid;
-    padding: 0 5px;
-    background: var(--new-room-color);
-    color: var(--secondary-text-color);
+  border: .2px rgba(255,255,230,.4) solid;
+  padding: 0 5px;
+  background: var(--new-room-color);
+  color: var(--secondary-text-color);
 }
 
 .new-room-form form {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center
 }
 
 .new-room-form input {
-    width: 145px;
-    background: var(--new-room-color);
-    color: var(--secondary-text-color);
-    font-size:14px
+  width: 145px;
+  background: var(--new-room-color);
+  color: var(--secondary-text-color);
+  font-size:14px
 }
 
 .new-room-form button {
-    background: var(--new-room-color);
-    color: var(--highlight-color);
-    font-size:22px;
-    border: 0;
+  background: var(--new-room-color);
+  color: var(--highlight-color);
+  font-size:22px;
+  border: 0;
 } 
 
 .new-room-form input::placeholder {
-    color: var(--faded-text);
-    font-weight: 300;
+  color: var(--faded-text);
+  font-weight: 300
 }
 
 .new-room-form input:focus {
-    outline-width: 0;
+  outline-width: 0;
 }
 
 .new-room-form input {
-    border: 0;
+  border: 0;
 }
 
 .new-room-form button {
-    border: 0;
+  border: 0;
 }
 
 .message {
-    margin: 10px;
-    border-radius: 3px;
-    display:flex;
-    width: 350px;
-    align-items: center;
-    min-height: 40px;
-    background: var(--main-color);
-    border-left: 5px solid var(--highlight-color);
-    border-radius: 2px;
+  padding: 5px;
+  margin: 7px;
+  display:flex;
+  align-items: center;
+  min-height: 40px;
+  border-radius: 5px;
+  font-weight: 800;
+  max-width: 500px;
 }
 
 .message .message-username {
-    font-size: 12px;
-    padding: 10px;
-    font-weight: bold;
-    background-color: var(--highlight-color);
-    color: var(--secondary-color);
-    margin: 10px;
-    flex:1 0 120px;
-    text-align: center
+  flex: 1 0;
+  width: 80px;
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  padding: 10px;
 }
 .message .message-text {
-    flex:4 0;
-    padding: 10px;
-    color: var(--secondary-text-color);
+  flex:4 0;
+  margin-left: 10px;
+  font-size:16px;
+  padding: 7px;
+  color: var(--main-color);
+  font-family: 'Gupter', serif;
+	box-shadow: 1px 2px 5px 1px #ddd;
 }
 
 .message-list {
-    box-sizing: border-box;
-    padding:20px;
-    background: var(--secondary-color);
+  box-sizing: border-box;
+  padding:20px;
+  background: #fff
 }
 
 .message-list .join-room {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    font-size: 34px;
-    font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 34px;
+  font-weight: 300;
 }
 
 .send-message-form {
-    background: var(--send-message-form);
-    /* display: flex; */
+  background: var(--send-message-form)
 }
 
 .send-message-form input {
-    width: 100%;
-    padding: 15px 10px;
-    margin: 0;
-    border-style: none;
-    background: var(--send-message-form);
-    font-weight: 200;
-    color: var(--secondary-text-color);
-    font-size:14px
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+  border-style: none;
+  background: var(--send-message-form);
+  font-weight: 100;
+  color: var(--secondary-text-color);
+  font-size:14px
 }
 
 .send-message-form input:focus {
-    outline-width: 0;
+  outline-width: 0;
 }
 
 .send-message-form input::placeholder {
-    color: var(--faded-text);
-    font-weight: 400
+  color: var(--faded-text);
+  font-weight: 100
 }
 
 .help-text {
-    position: absolute;
-    top: 10px;
+  position: absolute;
+  top: 10px;
+}
+.send-message-form input[type=submit] {
+  display: none
+}
+
+
+@media(max-width:500px){
+  .send-message-form {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    background: transparent
+  }  
+  .form-input {
+    flex:4
+  }
+
+  .send-message-form input[type=submit] {
+    flex:1;
+    height: 100%;
+    background: rgba(255, 255, 255,0.1);
+    color: #FFC42D;
+    font-size: 18px;
+    font-weight: bold;
+    align-self: center;
+    display: inline-block;
+    font-family: 'Gupter', serif;
+  }
+
+  .message-username{
+    flex: 1 0;
+    width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+  }
+  .message-text {
+      font-size:16px
+  }
+  .side-section {
+      display: none
+  }
+}
+
+/*** iPhone and iOS Form Input Zoom Fixes ***/
+/* Fix Input Zoom on devices older than iPhone 5: */
+@media screen and (device-aspect-ratio: 2/3) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"]{ font-size: 16px; }
+}
+
+/* Fix Input Zoom on iPhone 5, 5C, 5S, iPod Touch 5g */
+@media screen and (device-aspect-ratio: 40/71) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"]{ font-size: 16px; }
+}
+
+/* Fix Input Zoom on iPhone 6, iPhone 6s, iPhone 7  */
+@media screen and (device-aspect-ratio: 375/667) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"]{ font-size: 16px; }
+}
+
+/* Fix Input Zoom on iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus, iPhone 8, iPhone X, XS, XS Max  */
+@media screen and (device-aspect-ratio: 9/16) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"]{ font-size: 16px; }
 }
